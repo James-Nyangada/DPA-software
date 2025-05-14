@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { useState } from "react";
 import { GalleryVerticalEnd } from "lucide-react";
 
@@ -45,7 +45,7 @@ function SignupForm({ onSwitchToLogin }) {
         </div>
         <div className="space-y-2">
           <label htmlFor="email" className="text-sm font-medium">
-            Work Email
+            Work/Personal Email
           </label>
           <input
             id="email"
@@ -82,7 +82,7 @@ function SignupForm({ onSwitchToLogin }) {
             id="orgSize"
             className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
           >
-            <option value="" disabled selected>Select organization size</option>
+            <option value="" disabled defaultValue>Select organization size</option>
             <option value="1-10">1-10 employees</option>
             <option value="11-50">11-50 employees</option>
             <option value="51-200">51-200 employees</option>
@@ -99,7 +99,7 @@ function SignupForm({ onSwitchToLogin }) {
           Already have an account?{" "}
           <button 
             onClick={onSwitchToLogin} 
-            className="text-primary underline underline-offset-4 hover:text-primary/90"
+            className="text-primary cursor-pointer underline underline-offset-4 hover:text-primary/90"
           >
             Log in
           </button>
@@ -153,7 +153,7 @@ function LoginForm({ onSwitchToSignup }) {
           Don't have an account?{" "}
           <button 
             onClick={onSwitchToSignup} 
-            className="text-primary underline underline-offset-4 hover:text-primary/90"
+            className="text-primary cursor-pointer underline underline-offset-4 hover:text-primary/90"
           >
             Sign up
           </button>
@@ -171,7 +171,7 @@ export default function LoginPage() {
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
-          <a href="#" className="flex items-center gap-2 font-medium">
+          <a href="/" className="flex items-center gap-2 font-medium">
             <div className="bg-primary text-primary-foreground flex size-6 items-center justify-center rounded-md">
               <GalleryVerticalEnd className="size-4" />
             </div>
@@ -190,7 +190,7 @@ export default function LoginPage() {
       </div>
       <div className="bg-muted relative hidden lg:block">
         <img
-          src="/placeholder.svg"
+          src="/images/login.jpg"
           alt="Image"
           className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
         />
