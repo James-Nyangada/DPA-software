@@ -52,24 +52,20 @@ const data = {
     },
     {
       title: "Users",
-      url: "#",
+      url: "/users",
       icon: IconChartBar,
     },
     {
       title: "Messages and Support",
-      url: "#",
+      url: "/messages",
       icon: IconFolder,
     },
     {
-      title: "Notifications",
-      url: "#",
-      icon: IconUsers,
+      title: "Billing and Plans",
+      url: "/billing",
+      icon: IconFileWord,
     },
-    {
-      title: "Email Campaigns",
-      url: "#",
-      icon: IconUsers,
-    },
+    
     
   ],
   navClouds: [
@@ -123,7 +119,7 @@ const data = {
   navSecondary: [
     {
       title: "Settings",
-      url: "#",
+      url: "/settings",
       icon: IconSettings,
     },
     {
@@ -138,7 +134,7 @@ const data = {
     },
   ],
   documents: [
-    {
+    /* {
       name: "Audit Logs",
       url: "#",
       icon: IconDatabase,
@@ -150,14 +146,10 @@ const data = {
     },
     {
       name: "Billing and Plans",
-      url: "#",
+      url: "/billing",
       icon: IconFileWord,
-    },
-    {
-      name: "Developer Tools",
-      url: "#",
-      icon: IconFileWord,
-    },
+    }, */
+    
   ],
 }
 
@@ -180,7 +172,7 @@ export function AppSidebar({
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavDocuments items={data.documents} />
+        {/* <NavDocuments items={data.documents} /> */}
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>

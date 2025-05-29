@@ -1,0 +1,383 @@
+{
+  "conversations": [
+    {
+      "id": "conv-1",
+      "subject": "Account Access Issue",
+      "company": "Acme Corporation",
+      "contact": {
+        "id": "user-1",
+        "name": "John Smith",
+        "email": "john.smith@acmecorp.com",
+        "avatar": "/placeholder.svg?height=40&width=40",
+        "role": "Admin"
+      },
+      "status": "open",
+      "priority": "high",
+      "tags": ["account", "access"],
+      "unread": true,
+      "lastActivity": "2024-05-16T09:30:00Z",
+      "messages": [
+        {
+          "id": "msg-1-1",
+          "sender": {
+            "id": "user-1",
+            "name": "John Smith",
+            "email": "john.smith@acmecorp.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Hello Support Team, We're having issues with user access to our admin dashboard. Several of our team members are getting 'Access Denied' errors when trying to log in. This is urgent as it's affecting our operations.",
+          "timestamp": "2024-05-16T09:30:00Z",
+          "attachments": []
+        },
+        {
+          "id": "msg-1-2",
+          "sender": {
+            "id": "support-1",
+            "name": "Support Team",
+            "email": "support@acmeinc.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Hi John, I'm sorry to hear about the access issues. Could you please provide the usernames of the affected team members and when this issue started occurring? Also, have there been any recent changes to your account settings?",
+          "timestamp": "2024-05-16T09:45:00Z",
+          "attachments": []
+        },
+        {
+          "id": "msg-1-3",
+          "sender": {
+            "id": "user-1",
+            "name": "John Smith",
+            "email": "john.smith@acmecorp.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "The affected users are sarah.johnson@acmecorp.com, mike.wilson@acmecorp.com, and david.lee@acmecorp.com. The issue started around 8:30 AM today. We haven't made any recent changes to our account settings.",
+          "timestamp": "2024-05-16T10:05:00Z",
+          "attachments": [
+            {
+              "name": "error_screenshot.png",
+              "size": "1.2 MB",
+              "type": "image/png",
+              "url": "#"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conv-2",
+      "subject": "Billing Inquiry",
+      "company": "Globex Industries",
+      "contact": {
+        "id": "user-3",
+        "name": "Michael Chen",
+        "email": "m.chen@globex.com",
+        "avatar": "/placeholder.svg?height=40&width=40",
+        "role": "Admin"
+      },
+      "status": "open",
+      "priority": "medium",
+      "tags": ["billing", "invoice"],
+      "unread": false,
+      "lastActivity": "2024-05-15T14:20:00Z",
+      "messages": [
+        {
+          "id": "msg-2-1",
+          "sender": {
+            "id": "user-3",
+            "name": "Michael Chen",
+            "email": "m.chen@globex.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "I have a question about our latest invoice. There seems to be a discrepancy in the number of user licenses we're being charged for. According to our records, we should have 85 active users, but the invoice shows charges for 92 users.",
+          "timestamp": "2024-05-15T14:20:00Z",
+          "attachments": [
+            {
+              "name": "invoice_may2024.pdf",
+              "size": "320 KB",
+              "type": "application/pdf",
+              "url": "#"
+            }
+          ]
+        },
+        {
+          "id": "msg-2-2",
+          "sender": {
+            "id": "support-2",
+            "name": "Billing Support",
+            "email": "billing@acmeinc.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Hello Michael, Thank you for bringing this to our attention. I've checked your account and you're right - there appears to be a discrepancy. I see that 7 users were added on May 2nd but were deactivated on May 5th. However, our billing system counted them for the full month. I'll adjust your invoice and send a corrected version shortly.",
+          "timestamp": "2024-05-15T15:10:00Z",
+          "attachments": []
+        },
+        {
+          "id": "msg-2-3",
+          "sender": {
+            "id": "user-3",
+            "name": "Michael Chen",
+            "email": "m.chen@globex.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Thank you for the quick response. That explains the discrepancy. Looking forward to receiving the corrected invoice.",
+          "timestamp": "2024-05-15T15:45:00Z",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "id": "conv-3",
+      "subject": "Feature Request: Enhanced Reporting",
+      "company": "Stark Industries",
+      "contact": {
+        "id": "user-8",
+        "name": "Sophia Martinez",
+        "email": "s.martinez@stark.com",
+        "avatar": "/placeholder.svg?height=40&width=40",
+        "role": "Admin"
+      },
+      "status": "open",
+      "priority": "low",
+      "tags": ["feature", "reporting"],
+      "unread": false,
+      "lastActivity": "2024-05-14T11:15:00Z",
+      "messages": [
+        {
+          "id": "msg-3-1",
+          "sender": {
+            "id": "user-8",
+            "name": "Sophia Martinez",
+            "email": "s.martinez@stark.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Hello, I'd like to suggest an enhancement to your reporting features. Currently, we can export reports in CSV and PDF formats, but it would be extremely helpful if we could also get them in Excel format with formulas intact. Additionally, having the ability to schedule automated report generation and email delivery would save us a lot of time.",
+          "timestamp": "2024-05-14T11:15:00Z",
+          "attachments": []
+        },
+        {
+          "id": "msg-3-2",
+          "sender": {
+            "id": "support-3",
+            "name": "Product Team",
+            "email": "product@acmeinc.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Hi Sophia, Thank you for your feature suggestion! We appreciate your input on how we can improve our reporting capabilities. Excel export with formulas and scheduled reports are actually both on our product roadmap for Q3 this year. I've added your request to our tracking system and increased its priority based on your feedback. Would you be interested in participating in our beta testing program when these features are ready?",
+          "timestamp": "2024-05-14T13:40:00Z",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "id": "conv-4",
+      "subject": "API Integration Help",
+      "company": "Wayne Enterprises",
+      "contact": {
+        "id": "user-24",
+        "name": "Victoria Walker",
+        "email": "v.walker@wayne.com",
+        "avatar": "/placeholder.svg?height=40&width=40",
+        "role": "Admin"
+      },
+      "status": "archived",
+      "priority": "medium",
+      "tags": ["api", "integration", "resolved"],
+      "unread": false,
+      "lastActivity": "2024-05-10T16:25:00Z",
+      "messages": [
+        {
+          "id": "msg-4-1",
+          "sender": {
+            "id": "user-24",
+            "name": "Victoria Walker",
+            "email": "v.walker@wayne.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Our development team is trying to integrate with your API but we're encountering some authentication issues. We're following the documentation but getting 401 Unauthorized responses. Can you help us troubleshoot?",
+          "timestamp": "2024-05-10T09:20:00Z",
+          "attachments": [
+            {
+              "name": "error_log.txt",
+              "size": "45 KB",
+              "type": "text/plain",
+              "url": "#"
+            }
+          ]
+        },
+        {
+          "id": "msg-4-2",
+          "sender": {
+            "id": "support-4",
+            "name": "Technical Support",
+            "email": "tech@acmeinc.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Hello Victoria, I've reviewed your error log and I think I see the issue. It looks like you're using our legacy authentication method which was deprecated last month. You need to update to our new OAuth 2.0 implementation. I've attached a guide that walks through the new authentication process step by step.",
+          "timestamp": "2024-05-10T10:45:00Z",
+          "attachments": [
+            {
+              "name": "oauth_integration_guide.pdf",
+              "size": "1.8 MB",
+              "type": "application/pdf",
+              "url": "#"
+            }
+          ]
+        },
+        {
+          "id": "msg-4-3",
+          "sender": {
+            "id": "user-24",
+            "name": "Victoria Walker",
+            "email": "v.walker@wayne.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Thank you for the quick response! We've implemented the new OAuth 2.0 authentication as per your guide and everything is working perfectly now. Really appreciate your help!",
+          "timestamp": "2024-05-10T16:25:00Z",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "id": "conv-5",
+      "subject": "Data Migration Assistance",
+      "company": "Umbrella Corporation",
+      "contact": {
+        "id": "user-6",
+        "name": "Lisa Wong",
+        "email": "l.wong@umbrella.com",
+        "avatar": "/placeholder.svg?height=40&width=40",
+        "role": "User"
+      },
+      "status": "open",
+      "priority": "high",
+      "tags": ["data", "migration"],
+      "unread": true,
+      "lastActivity": "2024-05-16T08:15:00Z",
+      "messages": [
+        {
+          "id": "msg-5-1",
+          "sender": {
+            "id": "user-6",
+            "name": "Lisa Wong",
+            "email": "l.wong@umbrella.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "We're planning to migrate our data from our legacy system to your platform next weekend. We have about 500GB of data including user records, transaction history, and document archives. Can you provide guidance on the best approach for this migration? We want to minimize downtime.",
+          "timestamp": "2024-05-16T08:15:00Z",
+          "attachments": []
+        }
+      ]
+    },
+    {
+      "id": "conv-6",
+      "subject": "Security Concern",
+      "company": "LexCorp",
+      "contact": {
+        "id": "user-12",
+        "name": "Olivia Brown",
+        "email": "o.brown@lexcorp.com",
+        "avatar": "/placeholder.svg?height=40&width=40",
+        "role": "Admin"
+      },
+      "status": "open",
+      "priority": "critical",
+      "tags": ["security", "urgent"],
+      "unread": true,
+      "lastActivity": "2024-05-16T07:30:00Z",
+      "messages": [
+        {
+          "id": "msg-6-1",
+          "sender": {
+            "id": "user-12",
+            "name": "Olivia Brown",
+            "email": "o.brown@lexcorp.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "URGENT: We've detected some suspicious login attempts to our admin accounts from unfamiliar IP addresses. We've temporarily changed all passwords, but we're concerned about a potential security breach. Please advise on immediate steps we should take and any security audits you can perform on our account.",
+          "timestamp": "2024-05-16T07:30:00Z",
+          "attachments": [
+            {
+              "name": "suspicious_logins.csv",
+              "size": "28 KB",
+              "type": "text/csv",
+              "url": "#"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conv-7",
+      "subject": "Training Request",
+      "company": "Cyberdyne Systems",
+      "contact": {
+        "id": "user-10",
+        "name": "Emma Davis",
+        "email": "e.davis@cyberdyne.com",
+        "avatar": "/placeholder.svg?height=40&width=40",
+        "role": "Manager"
+      },
+      "status": "archived",
+      "priority": "low",
+      "tags": ["training", "onboarding", "resolved"],
+      "unread": false,
+      "lastActivity": "2024-05-08T15:40:00Z",
+      "messages": [
+        {
+          "id": "msg-7-1",
+          "sender": {
+            "id": "user-10",
+            "name": "Emma Davis",
+            "email": "e.davis@cyberdyne.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "We've recently onboarded 15 new team members who need training on your platform. Do you offer any virtual training sessions or resources we can use to get them up to speed quickly?",
+          "timestamp": "2024-05-08T10:15:00Z",
+          "attachments": []
+        },
+        {
+          "id": "msg-7-2",
+          "sender": {
+            "id": "support-5",
+            "name": "Customer Success",
+            "email": "success@acmeinc.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Hi Emma, We'd be happy to help with training your new team members! We offer several options: 1) Live virtual training sessions (2 hours each) 2) Self-paced online courses through our Learning Center 3) Custom training workshops tailored to your specific needs Let me know which option would work best for your team, and we can schedule something right away.",
+          "timestamp": "2024-05-08T11:30:00Z",
+          "attachments": [
+            {
+              "name": "training_options.pdf",
+              "size": "450 KB",
+              "type": "application/pdf",
+              "url": "#"
+            }
+          ]
+        },
+        {
+          "id": "msg-7-3",
+          "sender": {
+            "id": "user-10",
+            "name": "Emma Davis",
+            "email": "e.davis@cyberdyne.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "The live virtual training sessions sound perfect for us. Could we schedule two sessions next week? Preferably Tuesday and Thursday morning if possible.",
+          "timestamp": "2024-05-08T13:45:00Z",
+          "attachments": []
+        },
+        {
+          "id": "msg-7-4",
+          "sender": {
+            "id": "support-5",
+            "name": "Customer Success",
+            "email": "success@acmeinc.com",
+            "avatar": "/placeholder.svg?height=40&width=40"
+          },
+          "content": "Great choice! I've scheduled two training sessions: - Tuesday, May 14th at 10:00 AM - 12:00 PM EST - Thursday, May 16th at 10:00 AM - 12:00 PM EST I've sent calendar invites to your email with the Zoom links. Please forward them to all participants. Is there anything specific you'd like our trainer to focus on during these sessions?",
+          "timestamp": "2024-05-08T15:40:00Z",
+          "attachments": []
+        }
+      ]
+    }
+  ]
+}
