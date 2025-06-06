@@ -38,7 +38,16 @@ export default function Home() {
                 
               >
               <Button variant="default" className="bg-primary text-primary-foreground cursor-pointer hover:bg-primary/90">
-                Login/Create Account
+                Login
+              </Button>
+                
+              </Link>
+              <Link
+                href="/login"
+                
+              >
+              <Button variant="default" className="bg-primary text-primary-foreground cursor-pointer hover:bg-primary/90">
+                Sign Up
               </Button>
                 
               </Link>

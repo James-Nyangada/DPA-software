@@ -32,16 +32,25 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import Cookies from "js-cookie"
+
+const userInfo = Cookies.get("user");
+const user = userInfo ? JSON.parse(userInfo) : null;
+
+const name = user ? `${user.firstName} ${user.lastName}` : "Guest";
+const email = user?.email ?? "";
+
+
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
+    name: name,
+    email: email,
     avatar: "/avatars/shadcn.jpg",
   },
   navMain: [
     {
-      title: "Overview/Home",
+      title: "Home",
       url: "/dashboard",
       icon: IconDashboard,
     },
@@ -176,7 +185,7 @@ export function AppSidebar({
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser />
       </SidebarFooter>
     </Sidebar>
   );

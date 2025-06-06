@@ -1,11 +1,124 @@
 'use client'
 import { useState } from "react";
+import {useRouter} from "next/navigation";
 import { GalleryVerticalEnd } from "lucide-react";
+import axios from "axios";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp"
+import { Button } from "@/components/ui/button";
+import Cookies from "js-cookie";
+
 
 // SignupForm Component
 function SignupForm({ onSwitchToLogin }) {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    organization: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    orgSize: ''
+  });
+  const [error, setError] = useState('');
+  const [step, setStep] = useState("form");
+  const [verificationCode, setVerificationCode] = useState("");
+  const [userId, setUserId] = useState(null);
+
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    if (formData.password !== formData.confirmPassword) {
+      return setError("Passwords do not match");
+    }
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth/register", {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        organizationName: formData.organization,
+        organizationSize: formData.orgSize,
+        email: formData.email,
+        password: formData.password,
+      });
+      setUserId(response.data.user._id);
+      setStep("verify");
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+    }
+  };
+
+  const handleVerification = async () => {
+    setError("");
+    try {
+      await axios.post("http://localhost:4000/api/auth/verify-email", {
+        userId,
+        code: verificationCode
+      });
+      alert("Email verified successfully. You may now log in.");
+      onSwitchToLogin();
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+    }
+  };
+
+  const resendCode = async () => {
+    setError("");
+    try {
+      await axios.post("http://localhost:4000/api/auth/resend-code", { userId });
+      alert("Verification code resent.");
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+    }
+  };
+
+  if (step === "verify") {
+    return (
+      <div className="space-y-6">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold">Verify Your Email</h1>
+          <p className="text-muted-foreground text-sm">Enter the code sent to your email address</p>
+        </div>
+        <InputOTP
+        className={"text-center"}
+          maxLength={6}
+          value={verificationCode}
+          onChange={(val) => setVerificationCode(val)}
+        >
+          <InputOTPGroup>
+            <InputOTPSlot index={0} />
+            <InputOTPSlot index={1} />
+            <InputOTPSlot index={2} />
+            <InputOTPSlot index={3} />
+            <InputOTPSlot index={4} />
+            <InputOTPSlot index={5} />
+          </InputOTPGroup>
+        </InputOTP>
+        <Button className="w-full mt-4 cursor-pointer" onClick={handleVerification}>Verify Email</Button>
+        <Button className="w-full mt-2 cursor-pointer" onClick={resendCode}>Resend Code</Button>
+        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+        <div className="text-center text-sm">
+          {verificationCode === "" ? (
+            <>Enter your one-time password.</>
+          ) : (
+            <>You entered: {verificationCode}</>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+
+
   return (
-    <div className="space-y-6">
+    <form className="space-y-6" onSubmit={handleSubmit}>
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">Sign Up</h1>
         <p className="text-muted-foreground text-sm">Create your account to get started</p>
@@ -18,6 +131,8 @@ function SignupForm({ onSwitchToLogin }) {
             </label>
             <input
               id="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
               className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
               placeholder="John"
             />
@@ -28,6 +143,8 @@ function SignupForm({ onSwitchToLogin }) {
             </label>
             <input
               id="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
               className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
               placeholder="Doe"
             />
@@ -39,6 +156,8 @@ function SignupForm({ onSwitchToLogin }) {
           </label>
           <input
             id="organization"
+            value={formData.organization}
+            onChange={handleChange}
             className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             placeholder="Acme Inc."
           />
@@ -50,6 +169,8 @@ function SignupForm({ onSwitchToLogin }) {
           <input
             id="email"
             type="email"
+            value={formData.email}
+            onChange={handleChange}
             className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             placeholder="name@example.com"
           />
@@ -61,6 +182,8 @@ function SignupForm({ onSwitchToLogin }) {
           <input
             id="password"
             type="password"
+            value={formData.password}
+            onChange={handleChange}
             className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
           />
         </div>
@@ -71,6 +194,8 @@ function SignupForm({ onSwitchToLogin }) {
           <input
             id="confirmPassword"
             type="password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
             className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
           />
         </div>
@@ -80,6 +205,8 @@ function SignupForm({ onSwitchToLogin }) {
           </label>
           <select
             id="orgSize"
+            value={formData.orgSize}
+            onChange={handleChange}
             className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
           >
             <option value="" disabled defaultValue>Select organization size</option>
@@ -91,7 +218,8 @@ function SignupForm({ onSwitchToLogin }) {
           </select>
         </div>
         <button
-          className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 w-full items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+          type="submit"
+          className="bg-primary cursor-pointer text-primary-foreground hover:bg-primary/90 inline-flex h-10 w-full items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
         >
           Sign Up
         </button>
@@ -105,14 +233,68 @@ function SignupForm({ onSwitchToLogin }) {
           </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 
 // LoginForm Component
 function LoginForm({ onSwitchToSignup }) {
+  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [error, setError] = useState('');
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    setCredentials({ ...credentials, [e.target.id]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth/login", credentials);
+      Cookies.set("token", response.data.token, {
+        path: "/",
+        sameSite: "strict",
+        secure: false, // true in production w/ HTTPS
+      });
+      Cookies.set("role", response.data.user.role, {
+        path: "/",
+        sameSite: "strict",
+        secure: false,
+      });
+      Cookies.set("user", JSON.stringify({
+        firstName: response.data.user.firstName,
+        lastName: response.data.user.lastName,
+        email: response.data.user.email
+      }), {
+        path: "/",
+        sameSite: "strict",
+        secure: false,
+      });
+      Cookies.set("Organization", JSON.stringify({
+        organizationName: response.data.user.organizationName,
+        organizationSize: response.data.user.organizationSize
+      }));
+      alert("Login successful");
+      const role = response.data.user.role;
+      if (role === "super-admin") {
+        router.push("/super-admin/dashboard");
+      } else if (role === "admin") {
+        router.push("/admin/dashboard");
+      } else if (role === "user") {
+        router.push("/user/dashboard");
+      }
+      else {
+        router.push("/unauthorized");
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || err.message);
+    }
+  };
+
+
   return (
-    <div className="space-y-6">
+    <form className="space-y-6" onSubmit={handleSubmit}>
       <div className="space-y-2 text-center">
         <h1 className="text-3xl font-bold">Login</h1>
         <p className="text-muted-foreground text-sm">Enter your credentials to access your account</p>
@@ -125,6 +307,7 @@ function LoginForm({ onSwitchToSignup }) {
           <input
             id="email"
             type="email"
+            value={credentials.email} onChange={handleChange}
             className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
             placeholder="name@example.com"
           />
@@ -141,11 +324,14 @@ function LoginForm({ onSwitchToSignup }) {
           <input
             id="password"
             type="password"
+            value={credentials.password} onChange={handleChange}
             className="border-input bg-background ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex h-10 w-full rounded-md border px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
           />
         </div>
+        {error && <p className="text-red-500 text-sm">{error}</p>}
         <button
-          className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex h-10 w-full items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+         type="submit"
+          className="bg-primary cursor-pointer text-primary-foreground hover:bg-primary/90 inline-flex h-10 w-full items-center cursor-pointer justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
         >
           Log In
         </button>
@@ -159,7 +345,7 @@ function LoginForm({ onSwitchToSignup }) {
           </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 }
 
